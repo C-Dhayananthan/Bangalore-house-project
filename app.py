@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route("/",methods = ['GET'])
 def home():
-    return render_template("index.html")
+    return render_template("templates/index.html")
 
 @app.route("/predict",methods= ["POST"])
 def predict():
@@ -34,9 +34,9 @@ def predict():
                 df = pd.DataFrame(x,index=cols.columns2()).transpose()
                 return round(np.expm1(model.predict(df).item()),3)
         output = predict_price(location,size,tqft,bath)
-        return render_template("index.html" , predicted = output)
+        return render_template("templates/index.html" , predicted = output)
     else:
-        return render_template("index.html")
+        return render_template("templates/index.html")
 
 if __name__ == "__main__" :
     app.run(debug = True)
