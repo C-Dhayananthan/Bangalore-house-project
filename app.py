@@ -6,7 +6,7 @@ import pandas as pd
 import cols
 
 
-app = Flask(__name__,template_folder="C:\PYTHON\Projects\Bangalore_house_price\html")
+app = Flask(__name__)
 
 @app.route("/",methods = ['GET'])
 def home():
@@ -19,7 +19,7 @@ def predict():
         tqft = float(request.form.get("tsqft"))
         bath = float(request.form.get("bath"))
         location = str(request.form.get("location"))
-        model = jb.load("C:\PYTHON\Projects\Bangalore_house_price\model2")
+        model = jb.load("model2")
         print(location)
         print(type(location))
         ## price predict
